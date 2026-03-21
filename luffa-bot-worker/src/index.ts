@@ -1,6 +1,7 @@
 import { LuffaApiClient } from "./luffaApi";
 import { parseMessage } from "./messageParser";
 import { MsgIdDedupeStore } from "./msgIdDedupeStore";
+import { config } from "./config";
 
 interface BackendRoundCandidate {
   id: string;
@@ -41,11 +42,7 @@ const FIXED_ANIMAL_SET = new Set<string>(FIXED_ANIMALS);
 const luffaApi = new LuffaApiClient();
 const msgIdDedupeStore = new MsgIdDedupeStore(1000);
 const POLL_INTERVAL_MS = 1000;
-// Configure with BACKEND_BASE_URL, e.g. BACKEND_BASE_URL=http://localhost:3000
-const BACKEND_BASE_URL = (process.env.BACKEND_BASE_URL ?? "http://localhost:3000").replace(
-  /\/+$/,
-  ""
-);
+const BACKEND_BASE_URL = config.backendBaseUrl.replace(/\/+$/, "");
 const START_RUN_URL = `${BACKEND_BASE_URL}/api/runs`;
 
 const gameState: PrototypeGameState = {

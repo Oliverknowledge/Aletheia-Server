@@ -26,6 +26,7 @@ export const config = {
   luffaBotUid: requireEnv("LUFFA_BOT_UID"),
   luffaBotSecret: requireEnv("LUFFA_BOT_SECRET"),
   pollIntervalMs: parsePollIntervalMs(),
+  backendBaseUrl: process.env.BACKEND_BASE_URL ?? "https://aletheia-server.onrender.com",
   luffaApiBaseUrl: process.env.LUFFA_API_BASE_URL ?? "https://api.luffa.chat",
   luffaPollPath: process.env.LUFFA_POLL_PATH ?? "/v1/bot/messages/poll",
   luffaSendPath: process.env.LUFFA_SEND_PATH ?? "/v1/bot/messages/send"
