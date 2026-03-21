@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+luffa-bot-worker/node_modules/
+
+# Local env secrets
+.env
+luffa-bot-worker/.env
+
+# Build outputs
+luffa-bot-worker/dist/
+
+# OS / editor files
+.DS_Store
+.vscode/
