@@ -88,3 +88,6 @@ Expected response:
 * Data is stored in memory only (no database).
 * Existing API responses and behaviour remain unchanged.
 AI was used as a tool to accelerate progress in the hackathon. Core features were overlooked and changed by humans.
+This was the backend half of our app.
+Video:
+https://www.youtube.com/watch?v=YHzwoyLVTa0
