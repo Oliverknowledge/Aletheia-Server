@@ -5,7 +5,7 @@ async function run(): Promise<void> {
   process.env.LUFFA_BOT_SECRET = process.env.LUFFA_BOT_SECRET || "test_secret";
   process.env.POLL_INTERVAL_MS = process.env.POLL_INTERVAL_MS || "1000";
 
-  const { LuffaApiClient } = await import("./luffaApi");
+  const { LuffaApiClient } = await import("./luffaApi.js");
 
   const samplePayload = [
     {

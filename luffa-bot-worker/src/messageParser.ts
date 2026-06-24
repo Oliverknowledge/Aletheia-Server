@@ -1,7 +1,7 @@
 export const VALID_ANIMALS = ["pig", "cat", "bull", "rabbit", "dog"] as const;
 
 export type AnimalGuess = (typeof VALID_ANIMALS)[number];
-export type BotCommand = "help" | "restart" | "quit";
+export type BotCommand = "help" | "restart" | "quit" | "status";
 
 export type ParsedMessage =
   | { type: "topic"; topic: string }
@@ -9,7 +9,7 @@ export type ParsedMessage =
   | { type: "command"; command: BotCommand }
   | { type: "invalid" };
 
-const COMMANDS = new Set<BotCommand>(["help", "restart", "quit"]);
+const COMMANDS = new Set<BotCommand>(["help", "restart", "quit", "status"]);
 const ANIMALS = new Set<AnimalGuess>(VALID_ANIMALS);
 
 function normalizeInput(text: string): string {

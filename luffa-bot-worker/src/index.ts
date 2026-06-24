@@ -2,6 +2,7 @@ import { LuffaApiClient } from "./luffaApi";
 import { parseMessage } from "./messageParser";
 import { MsgIdDedupeStore } from "./msgIdDedupeStore";
 import { config } from "./config";
+import { formatHelpMessage, formatStatusMessage } from "./botResponses";
 
 interface BackendRoundCandidate {
   id: string;
@@ -386,6 +387,24 @@ async function pollOnce(): Promise<void> {
         if (parsed.type === "command") {
           if (parsed.command === "restart" || parsed.command === "quit") {
             clearGameState();
+          }
+
+          if (parsed.command === "help") {
+            await luffaApi.sendDirectMessage(targetUid, formatHelpMessage());
+            continue;
+          }
+
+          if (parsed.command === "status") {
+            await luffaApi.sendDirectMessage(
+              targetUid,
+              formatStatusMessage({
+                gameActive: gameState.gameActive,
+                currentTopic: gameState.currentTopic,
+                currentRoundNumber: gameState.currentRoundNumber,
+                currentScore: gameState.currentScore
+              })
+            );
+            continue;
           }
 
           await luffaApi.sendDirectMessage(targetUid, "Send a topic to start a round (example: planets).");
